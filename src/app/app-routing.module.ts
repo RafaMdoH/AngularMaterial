@@ -4,6 +4,10 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { AdminModule } from './admin/admin.module';
 import { ContenedorComponent } from './contenedor/contenedor.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { AuthGuard } from './guard/auth.guard';
+import { LayoutLoginComponent } from './layout-login/layout-login.component';
 
 
 const routes: Routes = [
@@ -28,7 +32,22 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'login',
+    component: LayoutLoginComponent,
+    children: [
+      {
+        path: '',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegistroComponent
+      },
+    ]
   },
   {
     path: '**',

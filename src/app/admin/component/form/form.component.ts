@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit{
+export class FormComponent implements OnInit {
   addressForm: FormGroup;
   post: Post;
   id: number;
@@ -35,9 +35,7 @@ export class FormComponent implements OnInit{
       } else if (this.data) {
         this.id = this.data.id;
         this.postsService.getPost(this.id).subscribe( post => {
-          console.log(post);
           this.addressForm.patchValue(post[0]);
-          console.log(this.addressForm.value);
         } );
       }
     });

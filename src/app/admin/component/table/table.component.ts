@@ -54,9 +54,9 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   openModal() {
     const modalConfig = new MatDialogConfig();
-    modalConfig.disableClose = true;
-    modalConfig.autoFocus = true;
-    modalConfig.width = '50%';
+    modalConfig.disableClose = false;
+    modalConfig.autoFocus = false;
+    modalConfig.width = '30%';
     if (this.id) {
       modalConfig.data = {id: this.id};
     }
@@ -65,8 +65,6 @@ export class TableComponent implements AfterViewInit, OnInit {
     modal.afterClosed().subscribe( respuesta => {
       if (respuesta === true) {
         this.fetchPosts();
-      } else {
-        console.log(respuesta);
       }
     } );
   }
